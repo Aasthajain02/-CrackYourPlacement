@@ -1,0 +1,34 @@
+class Solution {
+public:
+
+
+    void maxfinder(vector<int>& prices,int i,int& minprice,int& maxprofit){
+        //base case
+        if(i==prices.size()) return;
+
+
+        //ik case solve krdo
+        if(prices[i]<minprice){//update buying value
+            minprice=prices[i];
+        }
+        int currprofit=prices[i]-minprice;
+        if(currprofit > maxprofit){
+            maxprofit=currprofit;
+        }
+
+        //recursive call
+        maxfinder(prices,i+1,minprice,maxprofit);
+
+    }
+
+
+    int maxProfit(vector<int>& prices) {
+        int minprice=INT_MAX;
+        int maxprofit=INT_MIN;  
+        int i=0;
+        maxfinder(prices,i,minprice,maxprofit);
+        return maxprofit;
+    }
+};
+
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/submissions/1324988136/
